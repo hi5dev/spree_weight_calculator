@@ -1,3 +1,6 @@
 module SpreeWeightCalculator
-  VERSION = "0.0.1"
+  # This gem uses semantic versioning.
+  #
+  # http://semver.org
+  VERSION = '0.1.0'
 end

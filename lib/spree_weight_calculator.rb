@@ -1,4 +1,4 @@
-require "spree_weight_calculator/engine"
+require 'spree_weight_calculator/engine'
 
 module SpreeWeightCalculator
 end

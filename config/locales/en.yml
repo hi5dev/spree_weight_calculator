@@ -1,6 +1,6 @@
 en:
   spree:
-    rules: Rules
-    default_weight: Default Weight
-    handling_fee: Handling Fee
+    costs: Shipping costs (comma separated)
+    weights: Weight groups (comma separated)
+    handling_fees: Handling fees (comma separated)
     shipping_weight_calculator_description: Weight-based shipping

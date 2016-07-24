@@ -26,8 +26,10 @@ ActiveRecord::Migrator.migrations_paths = [
 ]
 
 # Load the test dependencies.
-require 'rails/test_help'
 require 'byebug'
+require 'ffaker'
+require 'rails/test_help'
+require 'spree/testing_support/factories'
 
 # Filter out Minitest backtrace.
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new

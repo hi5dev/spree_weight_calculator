@@ -1,3 +1,5 @@
+require 'spree_core'
+
 module SpreeWeightCalculator
   class Engine < ::Rails::Engine
     isolate_namespace Spree

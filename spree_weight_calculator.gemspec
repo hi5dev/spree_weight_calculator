@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_core', '>= 3.1.0'
 
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'factory_girl', '~> 4.7.0'
+  s.add_development_dependency 'ffaker', '~> 2.2.0'
 end

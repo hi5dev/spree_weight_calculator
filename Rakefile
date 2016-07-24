@@ -9,13 +9,18 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-APP_RAKEFILE = File.expand_path('../test/dummy/Rakefile', __FILE__)
+app_rakefile_path = File.expand_path('../test/dummy/Rakefile', __FILE__)
 
-load 'rails/tasks/engine.rake'
-load 'rails/tasks/statistics.rake'
+if File.file?(app_rakefile_path)
+  APP_RAKEFILE = app_rakefile_path
+
+  load 'rails/tasks/engine.rake'
+  load 'rails/tasks/statistics.rake'
+end
 
 Bundler::GemHelper.install_tasks
 
+require 'spree/testing_support/extension_rake'
 require 'rake/testtask'
 
 Rake::TestTask.new(:test) do |t|
@@ -25,4 +30,13 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = false
 end
 
+desc 'Generates a dummy app for testing'
+task :test_app do
+  ENV['LIB_NAME'] = 'spree_weight_calculator'
+  ENV['DUMMY_PATH'] = 'test/dummy'
+
+  Rake::Task['extension:test_app'].invoke
+end
+
+# Default to running the test task.
 task default: :test

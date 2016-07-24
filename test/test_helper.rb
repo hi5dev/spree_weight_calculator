@@ -1,13 +1,34 @@
+# Disable Ruby warnings.
+$VERBOSE=nil
+
+# Abort if the test app hasn't been generated yet.
+unless File.directory?(File.expand_path('../dummy', __FILE__))
+  $stderr.puts 'You need to generate the test app before you can run the tests.'
+  $stderr.puts 'Run `rake test_app` and try again.'
+
+  exit(2)
+end
+
 # Configure Rails Environment
 ENV['RAILS_ENV'] ||= 'test'
 
-require File.expand_path('../../test/dummy/config/environment.rb',  __FILE__)
+# Load the Spree dummy app.
+require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
+# Configure ActiveSupport for testing.
+ActiveSupport.test_order = :random
+
+# Turn off deprecation warnings for ActiveSupport.
+ActiveSupport::Deprecation.silenced = true
+
+# Add the dummy app's migrations.
 ActiveRecord::Migrator.migrations_paths = [
-  File.expand_path('../../test/dummy/db/migrate', __FILE__)
+  File.expand_path('../dummy/db/migrate', __FILE__)
 ]
 
+# Load the test dependencies.
 require 'rails/test_help'
+require 'byebug'
 
 # Filter out Minitest backtrace.
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new

@@ -3,8 +3,7 @@ $VERBOSE=nil
 
 # Abort if the test app hasn't been generated yet.
 unless File.directory?(File.expand_path('../dummy', __FILE__))
-  $stderr.puts 'You need to generate the test app before you can run the tests.'
-  $stderr.puts 'Run `rake test_app` and try again.'
+  $stderr.puts 'You need to run `rake test_app` before you can run the tests.'
 
   exit(2)
 end

@@ -22,9 +22,9 @@ module Spree::Calculator::Shipping
 
     private
 
-    # Builds a package that weights the given amount.
+    # Builds a package that weighs the given amount.
     #
-    # @param [Fixnum] weight How much the package should weight.
+    # @param [Fixnum] weight How much the package should weigh.
     # @return [Spree::Stock::Package] A package with the given weight.
     def package(weight)
       variant = build(:variant, weight: weight)
